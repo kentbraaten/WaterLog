@@ -11,7 +11,7 @@ def add_event(data):
 
 def read_events():
     db = firestore.Client()
-    query = db.collection(EVENTS_COLLECTION).order_by("date")
+    query = db.collection(EVENTS_COLLECTION).order_by("dateTime")
     docs = query.stream()
     docs = list(map(document_to_data, docs))
 

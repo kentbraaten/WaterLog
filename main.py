@@ -17,6 +17,8 @@ def home():
 def add_event():
     event = {
         'eventType': request.json.get("eventType"),
+        'i2cAddress': request.json.get("i2cAddress"),
+        'pin': request.json.get("pin"),
         'reading' : request.json.get("reading"),
         'dateTime': request.json.get("dateTime")
     }
