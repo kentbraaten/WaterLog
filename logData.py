@@ -13,7 +13,7 @@ def read_events():
     db = firestore.Client()
     query = db.collection(EVENTS_COLLECTION).order_by("date")
     docs = query.stream()
-    docs = list(map(documentToDict, docs))
+    docs = list(map(document_to_data, docs))
 
 
 def document_to_data(doc):

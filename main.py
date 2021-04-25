@@ -20,7 +20,7 @@ def add_event():
         'reading' : request.json.get("reading"),
         'dateTime': request.json.get("dateTime")
     }
-    addedEvent = logData.addEvent(event)
+    addedEvent = logData.add_event(event)
     return json.dumps(addedEvent), 201
 
 
