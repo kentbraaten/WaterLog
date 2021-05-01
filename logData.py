@@ -1,17 +1,27 @@
 from google.cloud import firestore
 
-EVENTS_COLLECTION = "Event"
 
-def add_event(data):
+READINGS_COLLECTION = "Event"
+ACTIONS_COLLECTION = "Actions"
+SETTINGS_COLLECTION = "Settings"
+SYSTEM_EVENTS_COLLECTION = "SystemEvent"
+
+
+def add_event(data, eventType):
     db = firestore.Client()
-    event_ref = db.collection(EVENTS_COLLECTION).document(None)
-    event_ref.set(data)
+    event_ref = db.collection(eventType).document(None)
     return document_to_data(event_ref.get())
 
 
-def read_events():
+def add_event_array(data, eventType):
     db = firestore.Client()
-    query = db.collection(EVENTS_COLLECTION).order_by("dateTime")
+    event_ref = db.collection(eventType).document(None)
+    return document_to_data(event_ref.get())
+
+
+def read_events(eventType):
+    db = firestore.Client()
+    query = db.collection(eventType).order_by("dateTime")
     docs = query.stream()
     docs = list(map(document_to_data, docs))
 
