@@ -27,7 +27,7 @@ def add_reading():
         'dateTime': request.json.get("dateTime")
     }
 
-    addedEvent = logData.add_event(data, logData.READINGS_COLLECTION)(event)
+    addedEvent = logData.add_event(event, logData.READINGS_COLLECTION)
 
     return json.dumps(addedEvent), 201
 
@@ -43,7 +43,7 @@ def add_action():
         'dateTime': request.json.get("dateTime")
     }
 
-    addedAction = logData.add_event(data, logData.ACTIONS_COLLECTION)
+    addedAction = logData.add_event(action, logData.ACTIONS_COLLECTION)
     return json.dumps(addedAction), 201
 
 
@@ -51,12 +51,12 @@ def add_action():
 @app.route('/systemEvent/add', methods=['POST'])
 def add_system_event():
 
-    action = {
+    event = {
         'eventType': request.json.get("actionType"),
         'dateTime': request.json.get("dateTime")
     }
 
-    addedAction = logData.add_event(data, logData.SYSTEM_EVENTS_COLLECTION)
+    addedAction = logData.add_event(event, logData.SYSTEM_EVENTS_COLLECTION)
     return json.dumps(addedAction), 201
 
 
