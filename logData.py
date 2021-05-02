@@ -23,10 +23,10 @@ def add_event_array(data, eventType):
 
 def read_settings():
     db = firestore.Client()
-    query = db.collection(SETTINGS_COLLECTION).order_by("dateTime","DESCENDING")
+    query = db.collection(SETTINGS_COLLECTION)
     docs = query.stream()
     docs = list(map(document_to_data, docs))
-    return docs[0]
+    return docs
 
 
 def document_to_data(doc):
