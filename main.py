@@ -56,7 +56,7 @@ def add_system_event():
         'dateTime': request.json.get("dateTime")
     }
 
-    addedAction = logData.add_event(event, logData.SYSTEM_EVENTS_COLLECTION)
+    addedAction = logData.add_event(event, logData.ACTIONS_COLLECTION)
     return json.dumps(addedAction), 201
 
 
