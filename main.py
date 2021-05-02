@@ -63,13 +63,7 @@ def add_system_event():
 
 @app.route('/settings/add', methods=['POST'])
 def add_settings():
-    settings = {
-        "podId": request.json.get("podId"),
-        "dateTime": request.json.get("dateTime"),
-        "pots": request.json.get("pots")
-    }
-    dictSettings = json.load(io.StringIO(request.get_data(as_text=true)))
-    addedSettings = logData.add_event(dictSettings, logData.SETTINGS_COLLECTION)
+    addedSettings = logData.add_event(request.json, logData.SETTINGS_COLLECTION)
     return json.dumps(addedSettings), 201
 
     
