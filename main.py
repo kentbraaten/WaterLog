@@ -68,10 +68,10 @@ def add_settings():
 
     
 
-@app.route('/settings/all', methods=['GET'])
+@app.route('/settings/current', methods=['GET'])
 def return_events_as_json():
 
-    return json.dumps(logData.read_events(logData.SETTINGS_COLLECTION))
+    return json.dumps(logData.read_settings())
     
 
 
