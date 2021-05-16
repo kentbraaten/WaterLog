@@ -25,7 +25,6 @@ def read_settings():
     db = firestore.Client()
     query = db.collection(SETTINGS_COLLECTION)
     docs = query.stream()
-    docs = list(map(document_to_data, docs))
     return docs
 
 
