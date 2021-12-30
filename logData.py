@@ -32,7 +32,7 @@ def read_events(eventType):
 
 def read_settings():
     db = firestore.Client()
-    query = db.collection(SETTINGS_COLLECTION).order_by("dateTime").limit_to_last(1)
+    query = db.collection(SETTINGS_COLLECTION)
     docs = []
     for doc in query.stream():
         docs.append(doc.to_dict())
