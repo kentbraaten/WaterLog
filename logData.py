@@ -23,7 +23,7 @@ def add_event_array(data, eventType):
 
 def read_events(eventType):
     db = firestore.Client()
-    query = db.collection(eventType)
+    query = db.collection(eventType).order_by("dateTime")
     docs = []
     for doc in query.stream():
         docs.append(doc.to_dict())
@@ -32,7 +32,7 @@ def read_events(eventType):
 
 def read_settings():
     db = firestore.Client()
-    query = db.collection(SETTINGS_COLLECTION)
+    query = db.collection(SETTINGS_COLLECTION).order_by("dateTime").limit_to_last(1)
     docs = []
     for doc in query.stream():
         docs.append(doc.to_dict())
