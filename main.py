@@ -32,6 +32,12 @@ def add_reading():
     return json.dumps(addedEvent), 201
 
 
+@app.route('/readings/all', methods=['GET'])
+def return_readings_as_json():
+
+    return json.dumps(logData.read_events(logData.READINGS_COLLECTION))
+
+
 
 @app.route('/actions/add', methods=['POST'])
 def add_action():
@@ -65,11 +71,10 @@ def add_system_event():
 def add_settings():
     addedSettings = logData.add_event(request.json, logData.SETTINGS_COLLECTION)
     return json.dumps(addedSettings), 201
-
     
 
 @app.route('/settings/current', methods=['GET'])
-def return_events_as_json():
+def return_settings_as_json():
 
     return json.dumps(logData.read_settings())
     

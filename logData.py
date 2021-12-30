@@ -21,6 +21,15 @@ def add_event_array(data, eventType):
     return document_to_data(event_ref.get())
 
 
+def read_events(eventType):
+    db = firestore.Client()
+    query = db.collection(eventType)
+    docs = []
+    for doc in query.stream():
+        docs.append(doc)
+    return docs
+
+
 def read_settings():
     db = firestore.Client()
     query = db.collection(SETTINGS_COLLECTION)
