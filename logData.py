@@ -26,7 +26,7 @@ def read_events(eventType):
     query = db.collection(eventType)
     docs = []
     for doc in query.stream():
-        docs.append(doc)
+        docs.append(doc.to_dict())
     return docs
 
 
